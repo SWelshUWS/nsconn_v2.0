@@ -1,4 +1,4 @@
-# nsconn
+# nsconn V2.0
 A connector for the NeuroSky Mindwave Mobile 2 EEG headset. Nsconn is designed to emulate the functionality of the official ThinkGear connector, but with the added UNIX friendly bonus of printing to stdout (can be used with grep, output to a file etc). \
 If networking is specified, clients can connect to nsconn via a client socket on 127.0.0.1:9291 to begin recieving JSON headset data.\
 
