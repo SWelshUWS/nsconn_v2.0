@@ -30,4 +30,4 @@ else
 	echo "$NSMAN already exists."
 fi
 
-gcc -o /usr/bin/nsconn nsconn.c parsens.c format.c forward.c -lbluetooth -ljson-c `pkg-config --cflags --libs glib-2.0`
+gcc -o /usr/bin/nsconn nsconn.c parsens.c format.c forward.c outsock.c btsock.c -lbluetooth -ljson-c `pkg-config --cflags --libs glib-2.0`
