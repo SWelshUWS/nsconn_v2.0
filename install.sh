@@ -5,10 +5,10 @@
 
 sudo apt install libbluetooth-dev libglib2.0-dev libjson-c-dev
 
-CONF=~/.nsconn.conf
+CONF=/etc/.nsconn.conf
 if [ ! -f "$CONF" ];
 then
-	sudo cp nsconn.conf /etc/	
+	sudo cp ../config/nsconn.conf /etc/	
 else
 	echo "$CONF already exists."
 fi
@@ -25,7 +25,7 @@ NSMAN=/usr/share/man/man1/nsconn.1
 if [ ! -f "$NSMAN" ];
 then
   echo "created man entry for nsconn."
-  sudo cp ./nsconn.1 /usr/share/man/man1/
+  sudo cp ../docs/nsconn.1 /usr/share/man/man1/
 else
 	echo "$NSMAN already exists."
 fi
