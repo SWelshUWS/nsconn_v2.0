@@ -67,6 +67,7 @@ int jsonFormat(unsigned char * payload, int sz){
     unsigned char poorsignal = 0;
     unsigned long creationTime = 0;
 
+  
 
     //printf("starting payload parse\n");
     for (int byte = 0; byte < sz; byte++){
@@ -123,12 +124,16 @@ int jsonFormat(unsigned char * payload, int sz){
             // increments three bytes per loop until all values are parsed
             for(int j = 0; j < 24; j = (j+3)){
                
-                unsigned char b1 = byte;
-                unsigned char b2 = (byte+1);
-                unsigned char b3 = (byte+2);
+
+                // DO NOT TOUCH THIS AGAIN IDIOT
+                unsigned char b1 = payload[byte];
+                unsigned char b2 = payload[byte+1];
+                unsigned char b3 = payload[byte+2];
 
                 // concatenate 3 bytes to get bigendian eeg value
                 uint32_t asicVal = (b1 << 16) | (b2 << 8) | b3;
+
+               
 
 
                 json_object *jVal = json_object_new_int(asicVal);   
@@ -141,7 +146,7 @@ int jsonFormat(unsigned char * payload, int sz){
                 } 
 
 
-                byte = byte+2;  // increase number of bytes parsed in payload loop
+                byte = byte+3;  // increase number of bytes parsed in payload loop
 
             } // end band value collection
             // add collected values to root object
@@ -162,6 +167,7 @@ int jsonFormat(unsigned char * payload, int sz){
              forward(json_object_to_json_string_ext(asicObj, JSON_C_TO_STRING_SPACED));    
 
         }
+        
 
     } else if(payload[byte] < RAWWAV) {
 
